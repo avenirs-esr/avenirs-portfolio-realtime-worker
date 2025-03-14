@@ -1,0 +1,45 @@
+{
+  "name": "avenirs-portfolio-realtime-worker",
+  "version": "1.0.0",
+  "description": "Worker that consumes Kafka CDC topics to provision KeyDB for real-time processing.",
+  "main": "worker.js",
+  "scripts": {
+    "test": "echo \"WARNING: no test specified\" && exit 0",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "watch-node": "nodemon dist/src/worker.js",
+    "prepare": "husky"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@xxx": "./dist/lib/xxx/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/avenirs-esr/avenirs-portfolio-realtime-worker.git"
+  },
+  "keywords": [
+    "Realtime",
+    "Kafka",
+    "KeyDB",
+    "CDC"
+  ],
+  "author": "Arnaud Deman",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/avenirs-esr/avenirs-portfolio-realtime-worker/issues"
+  },
+  "homepage": "https://github.com/avenirs-esr/avenirs-portfolio-realtime-worker#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@types/node": "^22.13.10",
+    "husky": "^9.1.7",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "module-alias": "^2.2.3"
+  }
+}
