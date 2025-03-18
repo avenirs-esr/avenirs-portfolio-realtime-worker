@@ -1,8 +1,8 @@
 import { KafkaSettingsDefinition } from "kafka";
 const isLocal = process.env.NODE_TARGET == 'local';
 const kafkaLocalSettings: KafkaSettingsDefinition = {
-    clientId: 'realtime-worker1',
-    groupId: 'realtime-worker1',
+    clientId: 'realtime-local-worker1',
+    groupId: 'realtime-local-worker1',
     brokers: ['localhost:29092'],
     topic: 'avenirs_rt.public.sample',
     fromBeginning: false        
