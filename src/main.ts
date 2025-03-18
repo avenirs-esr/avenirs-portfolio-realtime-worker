@@ -12,7 +12,7 @@ worker.start();
 
  process.on('SIGTERM', async () => {
     logger.info('Shutting down...');
-   // await consumer.disconnect();
-   // redis.quit();
+    worker.stop();
+    logger.info('Shut down');
     process.exit(0);
   });
