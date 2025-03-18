@@ -7,12 +7,15 @@
     "test": "echo \"WARNING: no test specified\" && exit 0",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
-    "watch-node": "nodemon dist/src/worker.js",
+    "start:dev": "NODE_ENV=dev nodemon dist/main.js",
     "prepare": "husky"
   },
   "_moduleAliases": {
     "@root": ".",
-    "@xxx": "./dist/lib/xxx/src/index.js"
+    "@kafka": "./dist/kafka/index.js",
+    "@logging": "./dist/logging/index.js",
+    "@redis": "./dist/redis/index.js",
+    "@workers": "./dist/workers/index.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +36,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
+    "@types/ioredis": "^4.28.10",
     "@types/node": "^22.13.10",
     "husky": "^9.1.7",
     "nodemon": "^3.1.9",
@@ -40,6 +44,12 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "module-alias": "^2.2.3"
+    "dotenv": "^16.4.7",
+    "ioredis": "^5.6.0",
+    "kafkajs": "^2.2.4",
+    "module-alias": "^2.2.3",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "rxjs": "^7.8.2"
   }
 }
