@@ -34,6 +34,7 @@ export class KafkaService {
         "Kafka already started, stop it before starting again"
       );
     } else {
+      this._logger.info(`Starting Kafka with brokers: ${this._kafkaSettings.brokers}...`);
       this._logger.info(`Subscribing to topic ${this._kafkaSettings.topic}...`);
       await this._consumer.subscribe({
         topic: this._kafkaSettings.topic,
@@ -53,7 +54,7 @@ export class KafkaService {
         },
       });
       this._started = true;
-      this._logger.info("Kafka consumer started");
+      this._logger.info("Kafka started");
     }
   }
 

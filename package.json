@@ -8,6 +8,7 @@
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
     "start:dev": "NODE_ENV=dev nodemon dist/main.js",
+    "start:dev:local": "NODE_ENV=dev NODE_TARGET=local nodemon dist/main.js",
     "prepare": "husky"
   },
   "_moduleAliases": {

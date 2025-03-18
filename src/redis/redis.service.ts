@@ -36,7 +36,7 @@ export class RedisService {
         "Redis already started, stop it before starting again"
       );
     } else {
-      this._logger.info("Starting Redis...");
+      this._logger.info(`Starting Redis with uri: ${this._redisSettings.uri}...`);
       this._messageHandler = this._activeMessageHandler;
       await this._redis.connect();
       this._logger.info("Connected");
