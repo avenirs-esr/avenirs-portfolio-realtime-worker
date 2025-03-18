@@ -33,8 +33,17 @@ export class KafkaService {
       this._logger.error(
         "Kafka already started, stop it before starting again"
       );
+      return;
     } else {
       this._logger.info(`Starting Kafka with brokers: ${this._kafkaSettings.brokers}...`);
+      
+      const consumerJoinedPromise = new Promise<void>((resolve) => {
+        this._consumer.on(this._consumer.events.GROUP_JOIN, () => {
+          this._logger.info(`Consumer has joined the group ${this._kafkaSettings.groupId}`);
+          resolve();
+        });
+      });
+      
       this._logger.info(`Subscribing to topic ${this._kafkaSettings.topic}...`);
       await this._consumer.subscribe({
         topic: this._kafkaSettings.topic,
@@ -53,8 +62,13 @@ export class KafkaService {
           }
         },
       });
+      
+      await consumerJoinedPromise;
+      
       this._started = true;
-      this._logger.info("Kafka started");
+      this._logger.info("Kafka started and consumer joined group");
+      
+      return;
     }
   }
 
